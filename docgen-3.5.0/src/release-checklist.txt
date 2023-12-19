@@ -1,0 +1,27 @@
+Update version:
+
+	package.json
+	source/docgen.js
+	source/user-guide/parameters.json
+	source/user-guide/release-notes.txt
+
+Update release date:
+
+	source/user-guide/parameters.json
+
+Update release notes
+
+Build the user guide
+
+	./docgen run -i ./source/user-guide -o ./docs -p -d 20000 -t -m -n
+
+Publish to Github
+
+	git branch
+	git tag
+
+	... merge into gh-pages
+
+Publish to npm
+
+	npm publish

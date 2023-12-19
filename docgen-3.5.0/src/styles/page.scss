@@ -1,0 +1,131 @@
+
+/*
+ page
+*/
+
+html
+{
+	background-color: $brand-primary-color; //'make short pages appear to stretch to bottom'
+	color: $text;
+
+	body
+	{
+
+		min-width: $page-width + 40;
+
+		.w-fixed-width {
+			width: $page-width;
+			margin: 0 auto;
+		}
+
+	}
+}
+
+/*
+ header
+*/
+
+header
+{
+	@include fixed-color-text();
+
+	background-color: $content-background;
+	border-top: 2px solid $brand-primary-color;
+	border-bottom: 2px solid $brand-primary-color;
+
+	.header {
+		display: flex;
+		align-items: center;
+		height: 102px;
+		padding-right: 40px;
+	}
+
+	.headerLeftBlock {
+		display: flex;
+		align-items: center;
+	}
+
+	#dg-logo {
+		background-repeat: no-repeat;
+	}
+
+	#headerLeftText {
+		display: flex;
+		flex-direction: column;
+
+		font-weight: bold;
+		font-size: 16px;
+
+		a {
+			text-decoration: none;
+		}
+
+		#headerSponsor {
+			display: flex;
+			align-items: center;
+			font-weight: normal;
+			font-size: 11px;
+			margin: 5px 0 0 0;
+			opacity: 0.6;
+
+			span {
+				margin-right: 6px;
+			}
+
+			#sponsorLogo {
+				height: 12px;
+				margin: 0 auto;
+				display: block;
+			}
+		}
+	}
+
+	#headerRightBlock {
+		margin-left: auto;
+	}
+}
+
+/*
+ footer
+*/
+
+footer {
+
+	div {
+		padding: 15px 0 15px 0;
+	}
+
+	> div:first-child {
+		text-align: center;
+		background-color:$brand-secondary-color-light;
+	}
+
+	> div:nth-child(2) {
+
+		@include fixed-color-text($light-text);
+
+		text-align: center;
+		line-height: 35px;
+
+		> p:nth-child(2) {
+			font-size: 10px;
+			line-height: 12px;
+		}
+	}
+
+}
+
+/*
+ page content
+*/
+
+section {
+
+	background-color: $content-background;
+	padding: 25px 0 25px 0;
+
+	> div p, > div div, > div pre, > div ul, > div ol, > div table, > div blockquote {
+		margin: 20px 0 20px 0;
+	}
+
+}

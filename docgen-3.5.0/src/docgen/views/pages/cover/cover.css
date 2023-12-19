@@ -1,0 +1,39 @@
+.dgCoverInfo {
+  margin-top: 100px;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.dgCoverInfo {
+  border-collapse: separate; /*http://stackoverflow.com/questions/7625586/*/
+}
+
+.dgCoverInfo th {
+  background-color: rgb(46, 113, 225);
+  color: white;
+  font-size: 34px;
+  padding: 20px;
+  border: 1px solid rgb(46, 113, 225);
+  border-radius: 10px 10px 0 0;
+}
+
+.dgCoverInfo tr td {
+  border-top: 2px solid rgb(46, 113, 225);
+  border-left: 2px solid rgb(46, 113, 225);
+  border-bottom: none;
+  border-right: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.dgCoverInfo td:last-child {
+  border-right: 2px solid rgb(46, 113, 225);
+}
+
+.dgCoverInfo .dgFinalRow td {
+  border-bottom: 2px solid rgb(46, 113, 225);
+}
+
+.dgSummary {
+  margin-bottom: 100px;
+}

@@ -1,0 +1,113 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-07-31T18:23:35.525Z",
+    "end": "2023-07-31T18:24:05.658Z",
+    "duration": 30133,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8c4bd5a5-7a26-44a2-99e9-b756179e6559",
+      "title": "",
+      "fullFile": "cypress\\e2e\\features\\darazAddCart.feature",
+      "file": "cypress\\e2e\\features\\darazAddCart.feature",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e27be2f9-60ba-47e1-ad13-8f3fcb826f6c",
+          "title": "Daraz - Add To Cart Feature",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify Add To Cart Feature in Daraz",
+              "fullTitle": "Daraz - Add To Cart Feature Verify Add To Cart Feature in Daraz",
+              "timedOut": null,
+              "duration": 22451,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "var _a2, _b, _c, _d, _e;\nconst { remainingSteps, testCaseStartedId } = retrieveInternalSpecProperties();\ntaskTestCaseStarted(context, {\n  id: testCaseStartedId,\n  testCaseId,\n  attempt: attempt++,\n  timestamp: (0, messages_1.createTimestamp)()\n});\nwindow.testState = {\n  gherkinDocument,\n  pickles,\n  pickle\n};\nfor (const step of steps) {\n  if (step.hook) {\n    const hook = step.hook;\n    const testStepId = getTestStepId({\n      context,\n      pickleId: pickle.id,\n      hookIdOrPickleStepId: hook.id\n    });\n    cy.then(() => {\n      delete window.testState.pickleStep;\n      const start = (0, messages_1.createTimestamp)();\n      internalProperties.currentStepStartedAt = start;\n      taskTestStepStarted(context, {\n        testStepId,\n        testCaseStartedId,\n        timestamp: start\n      });\n      return cy.wrap(start, { log: false });\n    }).then((start) => {\n      (0, cypress_1.runStepWithLogGroup)({\n        fn: () => registry2.runHook(this, hook),\n        keyword: hook.keyword,\n        text: hook.tags\n      });\n      return cy.wrap(start, { log: false });\n    }).then((start) => {\n      const end = (0, messages_1.createTimestamp)();\n      taskTestStepFinished(context, {\n        testStepId,\n        testCaseStartedId,\n        testStepResult: {\n          status: messages.TestStepResultStatus.PASSED,\n          duration: (0, messages_1.duration)(start, end)\n        },\n        timestamp: end\n      });\n      remainingSteps.shift();\n    });\n  } else if (step.pickleStep) {\n    const pickleStep = step.pickleStep;\n    const testStepId = getTestStepId({\n      context,\n      pickleId: pickle.id,\n      hookIdOrPickleStepId: pickleStep.id\n    });\n    const text = (0, assertions_1.assertAndReturn)(pickleStep.text, \"Expected pickle step to have a text\");\n    const scenarioStep = (0, assertions_1.assertAndReturn)(context.astIdsMap.get((0, assertions_1.assertAndReturn)((_a2 = pickleStep.astNodeIds) === null || _a2 === void 0 ? void 0 : _a2[0], \"Expected to find at least one astNodeId\")), `Expected to find scenario step associated with id = ${(_b = pickleStep.astNodeIds) === null || _b === void 0 ? void 0 : _b[0]}`);\n    const argument = ((_c = pickleStep.argument) === null || _c === void 0 ? void 0 : _c.dataTable) ? new data_table_1.default(pickleStep.argument.dataTable) : ((_e = (_d = pickleStep.argument) === null || _d === void 0 ? void 0 : _d.docString) === null || _e === void 0 ? void 0 : _e.content) ? pickleStep.argument.docString.content : void 0;\n    cy.then(() => {\n      window.testState.pickleStep = step.pickleStep;\n      const start = (0, messages_1.createTimestamp)();\n      internalProperties.currentStep = { pickleStep };\n      internalProperties.currentStepStartedAt = start;\n      taskTestStepStarted(context, {\n        testStepId,\n        testCaseStartedId,\n        timestamp: start\n      });\n      return cy.wrap(start, { log: false });\n    }).then((start) => {\n      const beforeStepHooks = registry2.resolveBeforeStepHooks(tags);\n      const afterStepHooks = registry2.resolveAfterStepHooks(tags);\n      const options = {\n        pickle,\n        pickleStep,\n        gherkinDocument,\n        testCaseStartedId,\n        testStepId\n      };\n      const beforeHooksChain = beforeStepHooks.reduce((chain, beforeStepHook) => {\n        return chain.then(() => (0, cypress_1.runStepWithLogGroup)({\n          keyword: \"BeforeStep\",\n          text: beforeStepHook.tags,\n          fn: () => registry2.runStepHook(this, beforeStepHook, options)\n        }));\n      }, cy.wrap({}, { log: false }));\n      return beforeHooksChain.then(() => {\n        try {\n          return (0, cypress_1.runStepWithLogGroup)({\n            keyword: (0, assertions_1.assertAndReturn)(\"keyword\" in scenarioStep && scenarioStep.keyword, \"Expected to find a keyword in the scenario step\"),\n            argument,\n            text,\n            fn: () => registry2.runStepDefininition(this, text, argument)\n          }).then((result) => {\n            return afterStepHooks.reverse().reduce((chain, afterStepHook) => {\n              return chain.then(() => (0, cypress_1.runStepWithLogGroup)({\n                keyword: \"AfterStep\",\n                text: afterStepHook.tags,\n                fn: () => registry2.runStepHook(this, afterStepHook, options)\n              }));\n            }, cy.wrap({}, { log: false })).then(() => {\n              return { start, result };\n            });\n          });\n        } catch (e) {\n          if (e instanceof registry_1.MissingDefinitionError) {\n            throw new Error(createMissingStepDefinitionMessage(context, pickleStep, context.registry.parameterTypeRegistry));\n          } else {\n            throw e;\n          }\n        }\n      });\n    }).then(({ start, result }) => {\n      var _a3, _b2, _c2;\n      const end = (0, messages_1.createTimestamp)();\n      if (result === \"pending\") {\n        taskTestStepFinished(context, {\n          testStepId,\n          testCaseStartedId,\n          testStepResult: {\n            status: messages.TestStepResultStatus.PENDING,\n            duration: (0, messages_1.duration)(start, end)\n          },\n          timestamp: end\n        });\n        remainingSteps.shift();\n        for (const skippedStep of remainingSteps) {\n          const hookIdOrPickleStepId = (0, assertions_1.assertAndReturn)((_b2 = (_a3 = skippedStep.hook) === null || _a3 === void 0 ? void 0 : _a3.id) !== null && _b2 !== void 0 ? _b2 : (_c2 = skippedStep.pickleStep) === null || _c2 === void 0 ? void 0 : _c2.id, \"Expected a step to either be a hook or a pickleStep\");\n          const testStepId2 = getTestStepId({\n            context,\n            pickleId: pickle.id,\n            hookIdOrPickleStepId\n          });\n          taskTestStepStarted(context, {\n            testStepId: testStepId2,\n            testCaseStartedId,\n            timestamp: (0, messages_1.createTimestamp)()\n          });\n          taskTestStepFinished(context, {\n            testStepId: testStepId2,\n            testCaseStartedId,\n            testStepResult: {\n              status: messages.TestStepResultStatus.SKIPPED,\n              duration: {\n                seconds: 0,\n                nanos: 0\n              }\n            },\n            timestamp: (0, messages_1.createTimestamp)()\n          });\n        }\n        for (let i = 0, count = remainingSteps.length; i < count; i++) {\n          remainingSteps.pop();\n        }\n        cy.then(() => this.skip());\n      } else {\n        taskTestStepFinished(context, {\n          testStepId,\n          testCaseStartedId,\n          testStepResult: {\n            status: messages.TestStepResultStatus.PASSED,\n            duration: (0, messages_1.duration)(start, end)\n          },\n          timestamp: end\n        });\n        remainingSteps.shift();\n      }\n    });\n  }\n}",
+              "err": {
+                "message": "TypeError: Cannot read properties of undefined (reading 'replaceAll')",
+                "estack": "TypeError: Cannot read properties of undefined (reading 'replaceAll')\n    at Object.toPosix (https://member.daraz.pk/__cypress/runner/cypress_runner.js:168988:56)\n    at Object.getSourcePosition (https://member.daraz.pk/__cypress/runner/cypress_runner.js:168797:86)\n    at getSourceDetails (https://member.daraz.pk/__cypress/runner/cypress_runner.js:169058:91)\n    at getSourceDetailsForLine (https://member.daraz.pk/__cypress/runner/cypress_runner.js:169125:25)\n    at apply (https://member.daraz.pk/__cypress/runner/cypress_runner.js:35004:17)\n    at wrapper (https://member.daraz.pk/__cypress/runner/cypress_runner.js:39891:16)\n    at arrayMap (https://member.daraz.pk/__cypress/runner/cypress_runner.js:35165:23)\n    at Function.map (https://member.daraz.pk/__cypress/runner/cypress_runner.js:44134:14)\n    at Object.getSourceStack (https://member.daraz.pk/__cypress/runner/cypress_runner.js:169183:64)\n    at Object.enhanceStack (https://member.daraz.pk/__cypress/runner/cypress_runner.js:164591:68)\n    at $Cy.fail (https://member.daraz.pk/__cypress/runner/cypress_runner.js:160546:72)\n    at onError (https://member.daraz.pk/__cypress/runner/cypress_runner.js:159867:22)\n    at tryCatcher (https://member.daraz.pk/__cypress/runner/cypress_runner.js:18744:23)\n    at Promise._settlePromiseFromHandler (https://member.daraz.pk/__cypress/runner/cypress_runner.js:16679:31)\n    at Promise._settlePromise (https://member.daraz.pk/__cypress/runner/cypress_runner.js:16736:18)\n    at Promise._settlePromise0 (https://member.daraz.pk/__cypress/runner/cypress_runner.js:16781:10)\n    at Promise._settlePromises (https://member.daraz.pk/__cypress/runner/cypress_runner.js:16857:18)\n    at _drainQueueStep (https://member.daraz.pk/__cypress/runner/cypress_runner.js:13451:12)\n    at _drainQueue (https://member.daraz.pk/__cypress/runner/cypress_runner.js:13444:9)\n    at ../../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://member.daraz.pk/__cypress/runner/cypress_runner.js:13460:5)\n    at Async.drainQueues (https://member.daraz.pk/__cypress/runner/cypress_runner.js:13330:14)",
+                "diff": null
+              },
+              "uuid": "01753e04-aa33-4993-9dfb-b1304766214a",
+              "parentUUID": "e27be2f9-60ba-47e1-ad13-8f3fcb826f6c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "01753e04-aa33-4993-9dfb-b1304766214a"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 22451,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "allureReport": true,
+        "disableWebdriverStepsReporting": true,
+        "disableWebdriverScreenshotsReporting": true,
+        "charts": true,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "./cypress/reports"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+/*
+ page dimensions
+*/
+
+$page-width: 980px; //default is 980px (recommended for iPad)
+
+/*
+ form width
+*/
+
+$form-width: 500px;
+
+/*
+ logo dimensions (should match the logo image file)
+*/
+
+$logo-height: 42px;
+$logo-width: 90px;
+
+/*
+ page color scheme
+*/
+
+$brand-primary-color: rgb(1, 3, 4);
+$brand-secondary-color: rgb(46, 113, 225);
+$brand-secondary-color-dark: rgb(22, 71, 193);
+$brand-secondary-color-light: rgb(222, 232, 252);
+
+$content-background: #fff;
+$light: #eee;
+$medium: #ddd;
+$dark: #bbb;
+$border: #999;
+
+/*
+ text color scheme
+*/
+
+$text: #444;
+$link: $brand-primary-color;
+$hover: #4a72c1;
+$visited: #888;
+$focus: #4b91ff;
+
+$success: #ccffbc;
+$warning: #fff0bd;
+$error: #ffe6e6;
+$information: $brand-secondary-color-light;
+
+$light-text: #fff; //'color for text on dark backgrounds'
+
+
+

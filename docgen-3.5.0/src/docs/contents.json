@@ -1,0 +1,53 @@
+[
+  {
+    "heading": "Quick Start",
+    "column": 1,
+    "pages": [
+      {
+        "title": "Overview",
+        "source": "index.md",
+        "html": true
+      },
+      {
+        "title": "Installation",
+        "source": "installation.md"
+      }
+    ]
+  },
+  {
+    "heading": "User Guide",
+    "column": 2,
+    "pages": [
+      {
+        "title": "Running DocGen",
+        "source": "running.md"
+      },
+      {
+        "title": "Writing content",
+        "source": "writing-content.md"
+      },
+      {
+        "title": "Markdown reference",
+        "source": "markdown.md"
+      },
+      {
+        "title": "Advanced content",
+        "source": "advanced-content.md"
+      }
+    ]
+  },
+  {
+    "heading": "Help",
+    "column": 3,
+    "pages": [
+      {
+        "title": "Troubleshooting",
+        "source": "troubleshooting.md"
+      },
+      {
+        "title": "Using with version control",
+        "source": "version-control.md"
+      }
+    ]
+  }
+]

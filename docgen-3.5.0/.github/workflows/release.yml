@@ -1,0 +1,63 @@
+name: Release
+on:
+  push:
+    branches: [ master ]
+permissions:
+  contents: write
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Check whether to release (if package.json version has been updated) 🛎️
+        id: check
+        uses: EndBug/version-check@v2
+
+      - name: Skipping release (no new version)
+        if: steps.check.outputs.changed == 'false'
+        run: 'echo "Skipping release (no package.json version change)"'
+
+      - name: Get package version 🛎️
+        if: steps.check.outputs.changed == 'true'
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@v1.3.1
+
+      - name: Setup 🛎️
+        if: steps.check.outputs.changed == 'true'
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install and Build 🔧
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          yarn install --frozen-lockfile
+          yarn test
+          sudo apt-get install -y xfonts-base xfonts-75dpi
+          wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb
+          sudo dpkg -i wkhtmltox_0.12.6.1-2.jammy_amd64.deb
+          sudo apt-get -f install -y
+          wkhtmltopdf -V
+          yarn build
+          yarn build:docs
+
+      - name: Publish Git Tag 🚀
+        if: steps.check.outputs.changed == 'true'
+        uses: mathieudutour/github-tag-action@v6.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          custom_tag: ${{ steps.package-version.outputs.current-version}}
+
+      - name: Publish NPM package 🚀
+        if: steps.check.outputs.changed == 'true'
+        uses: JS-DevTools/npm-publish@v2
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+
+      - name: Deploy Website 🚀
+        if: steps.check.outputs.changed == 'true'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: . # directory to deploy website
