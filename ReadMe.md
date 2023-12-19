@@ -1,5 +1,5 @@
 <html>
-<h1>Cypress Cucumber BDD Automation of an eCommerce Application</h1>
+<h1>Cypress Cucumber BDD Integration for eCommerce Web App</h1>
 
 <h2>Setup & Installation</h2>
 
