@@ -8,6 +8,7 @@ class createAccount{
         submitButton:()=> cy.get('#form-validate > div > div.primary > button'),
         verifyMsgText:()=>cy.get('#maincontent > div.page.messages > div:nth-child(2) > div > div > div'),
         verifyErrMsg:()=>cy.get('#firstname-error')
+        //testing comment
     }
 
     
